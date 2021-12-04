@@ -1,21 +1,12 @@
 Capstone Requirements
-
- Week 21
-
+Week 21
 Purpose: to outline and agree on your capstone MVP.
 Preparation for this meeting:
 User stories
-tickets
-Project ERD
-wireframes
-personal biosite COMPLETED
-Completed wireframes
-A github project with your application planned out - cards written by feature, lots of detail in each card
 Some sample JSON that matches your ERD - put this in a data ticket
 (If using an API) A working API get request. If you plan to use another API you need to demonstrate the ability to connect to this API and return data back. Use the react-setup project we made. Add a component with an axios call to demonstrate that you are able to hit your API and return back the data you need. NO EXTENSIONS in time will be granted for this. If you do not have a working API call on this date then use of your API will be a stretch goal and not part of your MVP.
 
 At the end of this meeting you should have:
-
 A list of your MVP goals
 An ordered list of your stretch goals
 A set of goals to complete by your next meeting

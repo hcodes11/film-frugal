@@ -3,6 +3,8 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import SignIn from '../views/SignIn';
 import { signOutUser } from '../api/auth';
+import Navigation from '../components/Navigation';
+import Routes from '../routes/index';
 
 function Initialize() {
   const [user, setUser] = useState([]);
@@ -28,6 +30,8 @@ function Initialize() {
       {user ? (
         <>
           <h2>Film Frugal</h2>
+          <Navigation />
+          <Routes />
           <button
             onClick={signOutUser}
             type="button"

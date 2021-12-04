@@ -1,0 +1,21 @@
+{
+    "-MncLslNmuGzw5joea_b" : {
+      "firebaseKey" : "-MncLslNmuGzw5joea_b",
+      "platform": "Netflix",
+      "link": "https://www.netflix.com/watch/70125231?source=35",
+      "price": "Subscription",
+      "thumbnail": "https://serpapi.com/searches/61ab9b76cca0143c5cff7665/images/8c4da2acd58f22f361c05d768cd15c38a07cc7db642569f4042dba18ec01037c.png",
+      "movie_id": "61ab9b76cca0143c5cff7665",
+      "title": "Grown Ups"
+    },
+    "-MncLzUpUVvSjNItsMZY" : {
+      "firebaseKey" : "-MncLzUpUVvSjNItsMZY",
+      "name": "Hulu",
+      "link": "https://www.hulu.com/watch/0fd676ca-74f4-40a8-9bc4-007dfd77f947",
+      "price": "Premium subscription",
+      "thumbnail": "https://serpapi.com/searches/61ab9c6aaf630458c75e63f6/images/b8b5e039bb125bfcd4ddc962884afaa863ec6313726e56c92b46d3ba3ea44a43.png",
+      "movie_id": "61ab9c6aaf630458c75e63f6",
+      "title": "Daddy's Home"
+    }
+  }
+  

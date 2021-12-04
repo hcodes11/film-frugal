@@ -5,3 +5,6 @@
 
 #DB Diagram
 ![DB Diagram](./documentation/db.png)
+
+#Mock up
+![Mock up](./documentation/mockup.png)

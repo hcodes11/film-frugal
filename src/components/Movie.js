@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import Watchlist from './Watchlist';
 
 export default function Movie({ taco }) {
   return (
@@ -9,11 +11,13 @@ export default function Movie({ taco }) {
         <button className="btn btn-light" type="button">
           {taco.title}
         </button>
-        <button className="btn btn-warning" type="button">
-          Details
+        <button className="btn" type="button">
+          <Link to={`/details/${taco.id}`} className="btn btn-warning">
+            Details
+          </Link>
         </button>
-        <button className="btn btn-success" type="button">
-          Add to Watchlist
+        <button className="btn" type="button">
+          <Watchlist movie={taco} />
         </button>
       </Alert>
     </>

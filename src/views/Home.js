@@ -23,7 +23,7 @@ export default function Home() {
       <SearchMovie setMovies={setMovies} />
       <div>
         {movies.map((movie) => (
-          <Movie key={movie.id} taco={movie} />
+          <Movie key={movie.id} taco={movie} setMovies={setMovies} />
         ))}
       </div>
     </>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import Watchlist from './Watchlist';
+import Add from './Add';
 
 export default function Movie({ taco }) {
   return (
@@ -17,7 +17,7 @@ export default function Movie({ taco }) {
           </Link>
         </button>
         <button className="btn" type="button">
-          <Watchlist movie={taco} />
+          <Add movie={taco} />
         </button>
       </Alert>
     </>

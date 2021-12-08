@@ -2,14 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { deleteMovie } from '../api/data/watchlistData';
 
-export default function WatchlistCard({ card, setWatchlist }) {
-  const handleClick = (method) => {
-    if (method === 'delete') {
-      deleteMovie(card.firebaseKey).then(setWatchlist);
-    }
-  };
+export default function WatchlistCard({ card }) {
   const imageApi = 'https://image.tmdb.org/t/p/w1280';
   return (
     <>
@@ -30,16 +24,12 @@ export default function WatchlistCard({ card, setWatchlist }) {
             Details
           </Link>
         </button>
-        <button
-          onClick={() => handleClick('delete')}
-          className="btn btn-danger"
-          type="button"
-        >
+        <button className="btn" type="button">
+          {card.favorite}
+        </button>
+        <Link to={`/delete/${card.firebaseKey}`} className="btn btn-danger">
           Delete
-        </button>
-        <button className="btn btn-success" type="button">
-          Favorite
-        </button>
+        </Link>
       </Alert>
     </>
   );
@@ -51,8 +41,8 @@ WatchlistCard.propTypes = {
     title: PropTypes.string,
     poster_path: PropTypes.string,
     firebaseKey: PropTypes.string,
+    favorite: PropTypes.bool,
   }),
-  setWatchlist: PropTypes.func.isRequired,
 };
 
 WatchlistCard.defaultProps = {

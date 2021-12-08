@@ -40,7 +40,7 @@ const getMovie = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateWatchlist = (obj) => new Promise((resolve, reject) => {
+const updateMovie = (obj) => new Promise((resolve, reject) => {
   axios
     .patch(`${dbUrl}/watchlist/${obj.firebaseKey}.json`, obj)
     .then(() => getWatchlist().then(resolve))
@@ -48,9 +48,5 @@ const updateWatchlist = (obj) => new Promise((resolve, reject) => {
 });
 
 export {
-  getWatchlist,
-  createWatchlist,
-  deleteMovie,
-  getMovie,
-  updateWatchlist,
+  getWatchlist, createWatchlist, deleteMovie, getMovie, updateMovie,
 };

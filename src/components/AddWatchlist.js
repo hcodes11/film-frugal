@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { createWatchlist, updateWatchlist } from '../api/data/watchlistData';
+import { createWatchlist, updateMovie } from '../api/data/watchlistData';
 
 const initialState = {
   title: '',
   firebaseKey: '',
   id: '',
   poster_path: '',
+  favorite: false,
 };
 
 export default function Watchlist({ movie }) {
@@ -36,7 +37,7 @@ export default function Watchlist({ movie }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (movie.firebaseKey) {
-      updateWatchlist(formInput).then(() => {
+      updateMovie(formInput).then(() => {
         history.push('/watchlist');
         resetForm();
       });
@@ -46,6 +47,7 @@ export default function Watchlist({ movie }) {
         id: movie.id,
         poster_path: movie.poster_path,
         title: movie.title,
+        favorite: false,
       }).then(() => {
         resetForm();
         history.push('/watchlist');

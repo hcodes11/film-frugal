@@ -1,5 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getWatchlist } from '../api/data/watchlistData';
+import WatchlistCard from '../components/WatchlistCard';
 
-export default function Home() {
-  return <h1>User&apos;s Watchlist goes here</h1>;
+export default function Watchlist() {
+  const [watchlist, setWatchlist] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    getWatchlist().then((watchlistArray) => {
+      if (isMounted) setWatchlist(watchlistArray);
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return watchlist.map((card) => (
+    <WatchlistCard key={card.firebaseKey} card={card} />
+  ));
 }

@@ -9,7 +9,11 @@ export default function WatchlistCard({ card, setWatchlist }) {
     if (method === 'delete') {
       deleteMovie(card.firebaseKey).then(setWatchlist);
     } else if (method === 'update') {
-      updateMovie({ ...card, favorite: true }).then(setWatchlist);
+      if (card.favorite) {
+        updateMovie({ ...card, favorite: false }).then(setWatchlist);
+      } else {
+        updateMovie({ ...card, favorite: true }).then(setWatchlist);
+      }
     }
   };
   const imageApi = 'https://image.tmdb.org/t/p/w500';
@@ -44,7 +48,7 @@ export default function WatchlistCard({ card, setWatchlist }) {
           className="btn btn-success"
           type="button"
         >
-          <p>{card.favorite ? 'This is my favorite' : 'Add to my favorite'}</p>
+          {card.favorite ? 'You favorited this movie' : 'Add to favorites'}
         </button>
       </Alert>
     </>

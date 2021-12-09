@@ -51,6 +51,7 @@ export default function Watchlist({ movie }) {
       }).then(() => {
         resetForm();
         history.push('/watchlist');
+        console.warn(formInput);
       });
     }
   };
@@ -77,7 +78,6 @@ Watchlist.propTypes = {
     title: PropTypes.string,
     poster_path: PropTypes.string,
     firebaseKey: PropTypes.string,
-    favorite: PropTypes.bool,
   }),
 };
 

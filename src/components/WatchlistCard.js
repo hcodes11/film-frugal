@@ -48,7 +48,11 @@ export default function WatchlistCard({ card, setWatchlist }) {
           className="btn btn-success"
           type="button"
         >
-          {card.favorite ? 'You favorited this movie' : 'Add to favorites'}
+          {card.favorite ? (
+            <i className="fas fa-star" style={{ color: 'yellow' }} />
+          ) : (
+            <i className="fas fa-star" />
+          )}
         </button>
       </Alert>
     </>

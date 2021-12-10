@@ -11,7 +11,7 @@ const initialState = {
   favorite: false,
 };
 
-export default function Watchlist({ movie }) {
+export default function AddWatchlist({ movie }) {
   const [formInput, setFormInput] = useState(initialState);
   const history = useHistory();
 
@@ -71,7 +71,7 @@ export default function Watchlist({ movie }) {
   );
 }
 
-Watchlist.propTypes = {
+AddWatchlist.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
@@ -81,6 +81,6 @@ Watchlist.propTypes = {
   }),
 };
 
-Watchlist.defaultProps = {
+AddWatchlist.defaultProps = {
   movie: {},
 };

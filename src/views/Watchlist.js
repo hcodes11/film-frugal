@@ -16,6 +16,10 @@ export default function Watchlist() {
   }, []);
 
   return watchlist.map((card) => (
-    <WatchlistCard key={card.firebaseKey} card={card} />
+    <WatchlistCard
+      key={card.firebaseKey}
+      card={card}
+      setWatchlist={setWatchlist}
+    />
   ));
 }

@@ -13,11 +13,7 @@ const initialState = {
 };
 
 export default function AddWatchlist({ movie }) {
-  const userInfo = userId();
-  const [formInput, setFormInput] = useState({
-    ...initialState,
-    uid: userInfo,
-  });
+  const [formInput, setFormInput] = useState(initialState);
   const history = useHistory();
 
   useEffect(() => {
@@ -53,7 +49,7 @@ export default function AddWatchlist({ movie }) {
         poster_path: movie.poster_path,
         title: movie.title,
         favorite: false,
-        uid: userInfo.user,
+        uid: userId(),
       }).then(() => {
         resetForm();
         history.push('/watchlist');
@@ -70,7 +66,7 @@ export default function AddWatchlist({ movie }) {
           type="submit"
           onChange={handleChange}
         >
-          {movie.firebaseKey ? 'Update' : 'Add to Watchlist'}
+          Add to Watchlist
         </button>
       </form>
     </div>

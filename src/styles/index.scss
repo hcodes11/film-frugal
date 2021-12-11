@@ -2,5 +2,9 @@
 @import 'globals';
 
 body {
-  background-color: $favColor !important;
+  background-color: black !important;
+  color: white !important;
+  display: flex;
+  justify-content: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

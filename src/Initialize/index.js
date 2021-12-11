@@ -26,9 +26,15 @@ function Initialize() {
 
   return (
     <>
-      <h2>Film Frugal</h2>
-      <Navigation user={user} />
-      {user ? <Routes user={user} /> : <SignIn user={user} />}
+      {user ? (
+        <>
+          <h2>Film Frugal</h2>
+          <Navigation user={user} />
+          <Routes user={user} />
+        </>
+      ) : (
+        <SignIn user={user} />
+      )}
     </>
   );
 }

@@ -1,11 +1,12 @@
 import axios from 'axios';
 import firebaseConfig from '../apiKeys';
+import userId from './userId';
 
 const dbUrl = firebaseConfig.databaseURL;
 
-const getWatchlist = (user) => new Promise((resolve, reject) => {
+const getWatchlist = (uid) => new Promise((resolve, reject) => {
   axios
-    .get(`${dbUrl}/watchlist.json?orderBy="uid"&equalTo="${user}"`)
+    .get(`${dbUrl}/watchlist.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
@@ -19,29 +20,31 @@ const getMovie = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createWatchlist = (obj, user) => new Promise((resolve, reject) => {
+const createWatchlist = (obj) => new Promise((resolve, reject) => {
   axios
     .post(`${dbUrl}/watchlist.json`, obj)
     .then((response) => {
       const firebaseKey = response.data.name;
       axios
         .patch(`${dbUrl}/watchlist/${firebaseKey}.json`, { firebaseKey })
-        .then(() => getWatchlist(user).then(resolve));
+        .then(() => {
+          getWatchlist(userId()).then(resolve);
+        });
     })
     .catch(reject);
 });
 
-const deleteMovie = (firebaseKey, user) => new Promise((resolve, reject) => {
+const deleteMovie = (firebaseKey) => new Promise((resolve, reject) => {
   axios
     .delete(`${dbUrl}/watchlist/${firebaseKey}.json`)
-    .then(() => getWatchlist(user).then(resolve))
+    .then(() => getWatchlist(userId()).then(resolve))
     .catch(reject);
 });
 
-const updateMovie = (obj, user) => new Promise((resolve, reject) => {
+const updateMovie = (obj) => new Promise((resolve, reject) => {
   axios
     .patch(`${dbUrl}/watchlist/${obj.firebaseKey}.json`, obj)
-    .then(() => getWatchlist(user).then(resolve))
+    .then(() => getWatchlist(userId()).then(resolve))
     .catch(reject);
 });
 

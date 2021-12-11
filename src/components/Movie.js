@@ -38,7 +38,6 @@ Movie.propTypes = {
     poster_path: PropTypes.string,
     firebaseKey: PropTypes.string,
     favorite: PropTypes.bool,
-    uid: PropTypes.string,
   }),
 };
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import SignIn from '../views/SignIn';
-import { signOutUser } from '../api/auth';
 import Navigation from '../components/Navigation';
 import Routes from '../routes/index';
 
@@ -27,22 +26,9 @@ function Initialize() {
 
   return (
     <>
-      {user ? (
-        <>
-          <h2>Film Frugal</h2>
-          <Navigation />
-          <Routes />
-          <button
-            onClick={signOutUser}
-            type="button"
-            className="btn btn-danger border border-dark"
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <SignIn user={user} />
-      )}
+      <h2>Film Frugal</h2>
+      <Navigation user={user} />
+      {user ? <Routes user={user} /> : <SignIn user={user} />}
     </>
   );
 }

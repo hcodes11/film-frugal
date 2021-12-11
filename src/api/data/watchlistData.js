@@ -10,6 +10,15 @@ const getWatchlist = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getMovie = (firebaseKey) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/watchlist/${firebaseKey}.json`)
+    .then((response) => {
+      resolve(response.data);
+    })
+    .catch(reject);
+});
+
 const createWatchlist = (obj) => new Promise((resolve, reject) => {
   axios
     .post(`${dbUrl}/watchlist.json`, obj)
@@ -28,15 +37,6 @@ const deleteMovie = (firebaseKey) => new Promise((resolve, reject) => {
   axios
     .delete(`${dbUrl}/watchlist/${firebaseKey}.json`)
     .then(() => getWatchlist().then(resolve))
-    .catch(reject);
-});
-
-const getMovie = (firebaseKey) => new Promise((resolve, reject) => {
-  axios
-    .get(`${dbUrl}/watchlist/${firebaseKey}.json`)
-    .then((response) => {
-      resolve(response.data);
-    })
     .catch(reject);
 });
 

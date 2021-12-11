@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { createWatchlist, updateMovie } from '../api/data/watchlistData';
+import userId from '../api/data/userId';
 
 const initialState = {
   title: '',
@@ -12,7 +13,11 @@ const initialState = {
 };
 
 export default function AddWatchlist({ movie }) {
-  const [formInput, setFormInput] = useState(initialState);
+  const userInfo = userId();
+  const [formInput, setFormInput] = useState({
+    ...initialState,
+    uid: userInfo,
+  });
   const history = useHistory();
 
   useEffect(() => {
@@ -48,6 +53,7 @@ export default function AddWatchlist({ movie }) {
         poster_path: movie.poster_path,
         title: movie.title,
         favorite: false,
+        uid: userInfo.user,
       }).then(() => {
         resetForm();
         history.push('/watchlist');
@@ -64,7 +70,7 @@ export default function AddWatchlist({ movie }) {
           type="submit"
           onChange={handleChange}
         >
-          Add to Watchlist
+          {movie.firebaseKey ? 'Update' : 'Add to Watchlist'}
         </button>
       </form>
     </div>
@@ -78,6 +84,7 @@ AddWatchlist.propTypes = {
     poster_path: PropTypes.string,
     firebaseKey: PropTypes.string,
     favorite: PropTypes.bool,
+    uid: PropTypes.string,
   }),
 };
 

@@ -12,7 +12,7 @@ export default function Routes() {
         <Route exact path={['/', '/home']} component={Home} />
         <Route exact path="/popular" component={Popular} />
         <Route exact path="/watchlist" component={Watchlist} />
-        <Route exact path="/details" component={Details} />
+        <Route exact path="/details/:id" component={Details} />
       </Switch>
     </div>
   );

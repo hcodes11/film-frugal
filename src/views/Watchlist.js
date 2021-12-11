@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { getWatchlist } from '../api/data/watchlistData';
 import WatchlistCard from '../components/WatchlistCard';
+import userId from '../api/data/userId';
 
 export default function Watchlist() {
   const [watchlist, setWatchlist] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
-    getWatchlist().then((watchlistArray) => {
+    getWatchlist(userId()).then((watchlistArray) => {
       if (isMounted) setWatchlist(watchlistArray);
     });
     return () => {

@@ -1,47 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import SignOutButton from './SignOutButton';
-import SignInButton from './SignInButton';
+import { signOutUser } from '../api/auth';
 
-export default function Navigation({ user }) {
+export default function Navigation() {
   return (
-    <>
-      {user ? (
-        <>
-          <Link className="nav-link active" to="/home">
-            Home
-          </Link>
-          <Link className="nav-link active" to="/popular">
-            Popular
-          </Link>
-          <Link className="nav-link active" to="/watchlist">
-            My Watch List
-          </Link>
-          <Link className="nav-link active" to="/details">
-            Details
-          </Link>
-          <SignOutButton />
-        </>
-      ) : (
-        <>
-          <div />
-          <SignInButton />
-        </>
-      )}
-    </>
+    <div className="text-center mb-3">
+      <>
+        <Link className="nav-link active" to="/home">
+          Home
+        </Link>
+        <Link className="nav-link active" to="/popular">
+          Popular
+        </Link>
+        <Link className="nav-link active" to="/watchlist">
+          My Watch List
+        </Link>
+        <Link className="nav-link active" to="/details">
+          Details
+        </Link>
+        <button
+          onClick={signOutUser}
+          type="button"
+          className="btn btn-danger border border-dark"
+        >
+          Logout
+        </button>
+      </>
+    </div>
   );
 }
-
-Navigation.propTypes = {
-  user: PropTypes.oneOfType([
-    PropTypes.shape({
-      uid: PropTypes.string,
-    }),
-    PropTypes.bool,
-  ]),
-};
-
-Navigation.defaultProps = {
-  user: null,
-};

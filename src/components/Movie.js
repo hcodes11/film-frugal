@@ -25,9 +25,7 @@ export default function Movie({ taco }) {
             Details
           </Link>
         </button>
-        <button className="btn" type="button">
-          <AddWatchlist movie={taco} />
-        </button>
+        <AddWatchlist movie={taco} />
       </Alert>
     </>
   );

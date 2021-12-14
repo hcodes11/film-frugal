@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import Movie from '../components/Movie';
 import getPopularMovies from '../api/data/movieData';
+
+const MovieContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -15,10 +22,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <MovieContainer>
       {movies.map((movie) => (
         <Movie key={movie.id} taco={movie} />
       ))}
-    </div>
+    </MovieContainer>
   );
 }

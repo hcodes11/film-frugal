@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+// import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import Stream from '../components/Stream';
 
@@ -8,10 +9,10 @@ export default function Details() {
   const [rent, setRent] = useState([]);
 
   const { id } = useParams();
+  const apiTMDB = process.env.REACT_APP_TMDB_API;
+  const streamUrl = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${apiTMDB}&locale=US`;
 
   useEffect(() => {
-    const apiTMDB = process.env.REACT_APP_TMDB_API;
-    const streamUrl = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${apiTMDB}&locale=US`;
     fetch(streamUrl)
       .then((response) => response.json())
       .then((data) => {
@@ -29,6 +30,7 @@ export default function Details() {
           <Stream key={provider.provider_id} taco={provider} />
         ))}
       </div>
+
       {buy && <h5>Buying options here</h5>}
       <div>
         {buy?.map((provider) => (

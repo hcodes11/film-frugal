@@ -48,6 +48,20 @@ const updateMovie = (obj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getFavorites = () => new Promise((resolve, reject) => {
+  getWatchlist(userId())
+    .then((movies) => {
+      const favMovies = movies.filter((movie) => movie.favorite);
+      resolve(favMovies);
+    })
+    .catch(reject);
+});
+
 export {
-  getWatchlist, createWatchlist, deleteMovie, getMovie, updateMovie,
+  getWatchlist,
+  createWatchlist,
+  deleteMovie,
+  getMovie,
+  updateMovie,
+  getFavorites,
 };

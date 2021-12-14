@@ -1,17 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Alert } from 'reactstrap';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import AddWatchlist from './AddWatchlist';
+
+const MovieCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  width: 3.5in;
+  height: 4.2in;
+  padding: 20px;
+  border-radius: 1px;
+  margin: 25px;
+  box-shadow: 10px 10px 10px 0px;
+
+  position: relative;
+  z-index: 0;
+
+  transition: transform 0.4s, box-shadow 0.4s;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 20px 20px 20px 0px;
+  }
+`;
 
 export default function Movie({ taco }) {
   const imageApi = 'https://image.tmdb.org/t/p/w500';
   return (
     <>
-      <Alert color="light">
-        <button className="btn btn-light" type="button">
-          {taco.title}
-        </button>
+      <MovieCard>
+        <div className="title">{taco.title}</div>
         <div className="card" style={{ width: '150px' }}>
           <img
             className="card-img-top"
@@ -26,7 +48,7 @@ export default function Movie({ taco }) {
           </Link>
         </button>
         <AddWatchlist movie={taco} />
-      </Alert>
+      </MovieCard>
     </>
   );
 }

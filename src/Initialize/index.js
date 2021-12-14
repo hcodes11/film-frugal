@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import styled from 'styled-components';
 import SignIn from '../views/SignIn';
 import Navigation from '../components/Navigation';
 import Routes from '../routes/index';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 function Initialize() {
   const [user, setUser] = useState([]);
@@ -27,11 +34,11 @@ function Initialize() {
   return (
     <>
       {user ? (
-        <>
+        <Container>
           <h2>Film Frugal</h2>
           <Navigation user={user} />
           <Routes user={user} />
-        </>
+        </Container>
       ) : (
         <SignIn user={user} />
       )}

@@ -4,6 +4,7 @@ import Watchlist from '../views/Watchlist';
 import Details from '../views/Details';
 import Home from '../views/Home';
 import Popular from '../views/Popular';
+// import Favorites from '../views/Favorites';
 
 export default function Routes() {
   return (
@@ -12,6 +13,7 @@ export default function Routes() {
         <Route exact path={['/', '/home']} component={Home} />
         <Route exact path="/popular" component={Popular} />
         <Route exact path="/watchlist" component={Watchlist} />
+        {/* <Route exact path="/favorites" component={Favorites} /> */}
         <Route exact path="/details/:id" component={Details} />
       </Switch>
     </div>

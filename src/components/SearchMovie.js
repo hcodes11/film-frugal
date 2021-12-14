@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const SearchBar = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-bottom: 2px dashed black;
+`;
 
 export default function SearchMovie({ setMovies }) {
   const apiTMDB = process.env.REACT_APP_TMDB_API;
@@ -20,15 +28,17 @@ export default function SearchMovie({ setMovies }) {
   };
 
   return (
-    <form onSubmit={handleOnSubmit}>
-      <input
-        className="form-control form-control-lg me-1 search"
-        type="search"
-        placeholder="Which movie do you want to watch?"
-        onChange={handleOnChange}
-        value={search}
-      />
-    </form>
+    <SearchBar>
+      <form onSubmit={handleOnSubmit}>
+        <input
+          className="form-control form-control-lg me-1 search"
+          type="search"
+          placeholder="Which movie do you want to watch?"
+          onChange={handleOnChange}
+          value={search}
+        />
+      </form>
+    </SearchBar>
   );
 }
 

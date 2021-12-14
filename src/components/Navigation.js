@@ -1,10 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { signOutUser } from '../api/auth';
 
+const NavBar = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-bottom: 2px dashed black;
+`;
+
 export default function Navigation() {
   return (
-    <div className="text-center mb-3">
+    <NavBar>
       <>
         <Link className="nav-link active" to="/home">
           Home
@@ -13,11 +21,11 @@ export default function Navigation() {
           Popular
         </Link>
         <Link className="nav-link active" to="/watchlist">
-          My Watch List
+          My Watchlist
         </Link>
-        <Link className="nav-link active" to="/details">
-          Details
-        </Link>
+        {/* <Link className="nav-link active" to="/favorites">
+          My Favorites
+        </Link> */}
         <button
           onClick={signOutUser}
           type="button"
@@ -26,6 +34,6 @@ export default function Navigation() {
           Logout
         </button>
       </>
-    </div>
+    </NavBar>
   );
 }

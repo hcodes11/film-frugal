@@ -3,8 +3,13 @@
 
 body {
   background-color: black !important;
+  background-image: image;
   color: white !important;
   display: flex;
   justify-content: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#root {
+  width: 100%;
 }

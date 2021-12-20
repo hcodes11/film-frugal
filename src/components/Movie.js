@@ -15,7 +15,6 @@ const MovieCard = styled.div`
   padding: 20px;
   border-radius: 1px;
   margin: 25px;
-  box-shadow: 10px 10px 10px 0px;
 
   position: relative;
   z-index: 0;
@@ -24,12 +23,12 @@ const MovieCard = styled.div`
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 20px 20px 20px 0px;
   }
 `;
 
 export default function Movie({ taco }) {
   const imageApi = 'https://image.tmdb.org/t/p/w500';
+  console.warn(taco);
   return (
     <>
       <MovieCard>

@@ -10,6 +10,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `;
 
 function Initialize() {
@@ -35,7 +36,6 @@ function Initialize() {
     <>
       {user ? (
         <Container>
-          <h2>Film Frugal</h2>
           <Navigation user={user} />
           <Routes user={user} />
         </Container>

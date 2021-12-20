@@ -7,6 +7,7 @@ import userId from '../api/data/userId';
 const MovieContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  width: 100%
   justify-content: center;
 `;
 

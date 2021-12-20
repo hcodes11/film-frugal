@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Movie from '../components/Movie';
 import getPopularMovies from '../api/data/movieData';
+import Footer from '../components/Footer';
 
 const MovieContainer = styled.div`
   display: flex;
@@ -22,10 +23,13 @@ export default function Home() {
   }, []);
 
   return (
-    <MovieContainer>
-      {movies.map((movie) => (
-        <Movie key={movie.id} taco={movie} />
-      ))}
-    </MovieContainer>
+    <>
+      <MovieContainer>
+        {movies.map((movie) => (
+          <Movie key={movie.id} taco={movie} />
+        ))}
+      </MovieContainer>
+      <Footer />
+    </>
   );
 }

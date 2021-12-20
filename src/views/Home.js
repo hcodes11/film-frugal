@@ -4,7 +4,7 @@ import Movie from '../components/Movie';
 import SearchMovie from '../components/SearchMovie';
 
 const apiTMDB = process.env.REACT_APP_TMDB_API;
-const trendUrl = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiTMDB}`;
+const trendUrl = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiTMDB}&append_to_response=videos`;
 
 const HomeStyle = styled.div`
   display: flex;
@@ -32,8 +32,11 @@ export default function Home() {
 
   return (
     <HomeStyle>
-      <h5>Search Movies here</h5>
-      <SearchMovie setMovies={setMovies} />
+      <div className="jumbotron">
+        <p className="lead">
+          <SearchMovie setMovies={setMovies} />
+        </p>
+      </div>
       <MovieContainer>
         {movies.map((movie) => (
           <Movie key={movie.id} taco={movie} setMovies={setMovies} />

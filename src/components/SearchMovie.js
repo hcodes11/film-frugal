@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
-const SearchBar = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  border-bottom: 2px dashed black;
-`;
+// const SearchBar = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   padding: 10px;
+//   border-bottom: 2px dashed black;
+//   width: 500px;
+// `;
 
 export default function SearchMovie({ setMovies }) {
   const apiTMDB = process.env.REACT_APP_TMDB_API;
@@ -28,17 +29,17 @@ export default function SearchMovie({ setMovies }) {
   };
 
   return (
-    <SearchBar>
+    <div className="jumbotron">
       <form onSubmit={handleOnSubmit}>
         <input
           className="form-control form-control-lg me-1 search"
           type="search"
-          placeholder="Which movie do you want to watch?"
+          placeholder="Search for a movie here"
           onChange={handleOnChange}
           value={search}
         />
       </form>
-    </SearchBar>
+    </div>
   );
 }
 

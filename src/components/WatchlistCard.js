@@ -15,7 +15,6 @@ const MovieCard = styled.div`
   padding: 20px;
   border-radius: 1px;
   margin: 25px;
-  box-shadow: 10px 10px 10px 0px;
 
   position: relative;
   z-index: 0;
@@ -24,12 +23,24 @@ const MovieCard = styled.div`
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 20px 20px 20px 0px;
   }
 `;
 
-const Header = styled.div`
+const Together = styled.div`
   display: flex;
+  flex-direction: row;
+`;
+
+const Star = styled.button`
+  position: absolute;
+  font-size: 25px;
+  top: 0px;
+  right: 0px;
+  border: 0px;
+  background: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 1px yellow;
 `;
 
 export default function WatchlistCard({ card, setWatchlist }) {
@@ -48,40 +59,38 @@ export default function WatchlistCard({ card, setWatchlist }) {
   return (
     <>
       <MovieCard>
-        <Header>
+        <Together>
           <div className="title">{card.title}</div>
-          <button
-            onClick={() => handleClick('update')}
-            className="btn"
-            type="button"
-          >
-            {card.favorite ? (
-              <i className="fas fa-star" style={{ color: 'yellow' }} />
-            ) : (
-              <i className="fas fa-star" />
-            )}
-          </button>
-        </Header>
-        <div className="card" style={{ width: '150px' }}>
+        </Together>
+        <div className="card" style={{ width: '150px', position: 'relative' }}>
           <img
             className="card-img-top"
             src={imageApi + card.poster_path}
             aria-hidden
             alt={card.title}
           />
+          <Star onClick={() => handleClick('update')} type="button">
+            {card.favorite ? (
+              <i className="fas fa-star" style={{ color: 'yellow' }} />
+            ) : (
+              <i className="fas fa-star" style={{ color: 'transparent' }} />
+            )}
+          </Star>
         </div>
-        <button className="btn" type="button">
-          <Link to={`/details/${card.id}`} className="btn btn-warning">
-            Details
-          </Link>
-        </button>
-        <button
-          onClick={() => handleClick('delete')}
-          className="btn btn-danger"
-          type="button"
-        >
-          Delete
-        </button>
+        <Together>
+          <button className="btn" type="button">
+            <Link to={`/details/${card.id}`} className="btn btn-warning">
+              Details
+            </Link>
+          </button>
+          <button
+            onClick={() => handleClick('delete')}
+            className="btn"
+            type="button"
+          >
+            <i className="fas fa-trash-alt" style={{ color: 'red' }} />
+          </button>
+        </Together>
       </MovieCard>
     </>
   );

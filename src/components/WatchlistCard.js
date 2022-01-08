@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 import { deleteMovie, updateMovie } from '../api/data/watchlistData';
 
 const MovieCard = styled.div`
@@ -9,7 +10,6 @@ const MovieCard = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-
   width: 3.5in;
   height: 4.2in;
   padding: 20px;
@@ -33,14 +33,15 @@ const Together = styled.div`
 
 const Star = styled.button`
   position: absolute;
-  font-size: 25px;
+  font-size: 27px;
+  font-weight: bold;
   top: 0px;
   right: 0px;
   border: 0px;
   background: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-stroke: 1px yellow;
+  -webkit-text-stroke: 1px red;
 `;
 
 export default function WatchlistCard({ card, setWatchlist }) {
@@ -60,9 +61,11 @@ export default function WatchlistCard({ card, setWatchlist }) {
     <>
       <MovieCard>
         <Together>
-          <div className="title">{card.title}</div>
+          <div className="title" style={{ color: 'Grey', fontSize: '20px' }}>
+            {card.title}
+          </div>
         </Together>
-        <div className="card" style={{ width: '150px', position: 'relative' }}>
+        <div className="card" style={{ width: '200px', position: 'relative' }}>
           <img
             className="card-img-top"
             src={imageApi + card.poster_path}
@@ -71,24 +74,29 @@ export default function WatchlistCard({ card, setWatchlist }) {
           />
           <Star onClick={() => handleClick('update')} type="button">
             {card.favorite ? (
-              <i className="fas fa-star" style={{ color: 'yellow' }} />
+              <i className="fas fa-heart" style={{ color: 'red' }} />
             ) : (
-              <i className="fas fa-star" style={{ color: 'transparent' }} />
+              <i className="fas fa-heart" style={{ color: 'transparent' }} />
             )}
           </Star>
         </div>
         <Together>
-          <button className="btn" type="button">
-            <Link to={`/details/${card.id}`} className="btn btn-warning">
-              Details
-            </Link>
-          </button>
+          <Link to={`/details/${card.id}`} className="btn">
+            <i
+              className="fas fa-info-circle"
+              type="button"
+              style={{ color: 'yellow' }}
+            />
+          </Link>
           <button
             onClick={() => handleClick('delete')}
             className="btn"
             type="button"
           >
             <i className="fas fa-trash-alt" style={{ color: 'red' }} />
+          </button>
+          <button className="btn" type="button" style={{ color: 'grey' }}>
+            {card.vote_average}
           </button>
         </Together>
       </MovieCard>
@@ -99,10 +107,12 @@ export default function WatchlistCard({ card, setWatchlist }) {
 WatchlistCard.propTypes = {
   card: PropTypes.shape({
     id: PropTypes.number,
+    overview: PropTypes.string,
     title: PropTypes.string,
     poster_path: PropTypes.string,
     firebaseKey: PropTypes.string,
     favorite: PropTypes.bool,
+    vote_average: PropTypes.string,
   }),
   setWatchlist: PropTypes.func.isRequired,
 };

@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spinner } from 'reactstrap';
 import { signInUser } from '../api/auth';
-import image from '../images/im.jpg';
+import image from '../images/movie2.jpg';
 
 const Background = styled.div`
   display: flex;
   background-image: url(${image});
   flex-wrap: wrap;
   position: absolute;
+  padding: 20px;
   align-items: center;
-  up: 0px !important;
-  left: 0px !important;
   height: 100%;
   width: 100%;
   object-fit: fill;
@@ -21,7 +20,7 @@ const Background = styled.div`
 
 export default function SignIn({ user }) {
   return (
-    <Background>
+    <>
       {user === null ? (
         <div className="text-center">
           <Spinner
@@ -30,7 +29,7 @@ export default function SignIn({ user }) {
           />
         </div>
       ) : (
-        <>
+        <Background>
           <h1>Welcome to Film Frugal!</h1>
           <button
             type="button"
@@ -39,9 +38,9 @@ export default function SignIn({ user }) {
           >
             Sign In
           </button>
-        </>
+        </Background>
       )}
-    </Background>
+    </>
   );
 }
 

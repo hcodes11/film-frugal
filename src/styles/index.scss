@@ -1,9 +1,9 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 @import 'globals';
 
+
 body {
   background-color: black !important;
-  background-image: image;
   color: white !important;
   display: flex;
   justify-content: center;
@@ -12,4 +12,10 @@ body {
 
 #root {
   width: 100%;
+}
+
+.summary {
+  background-color: black !important;
+  position: absolute;
+  bottom: 0;left: 0;right: 0;
 }

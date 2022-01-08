@@ -26,14 +26,21 @@ const MovieCard = styled.div`
   }
 `;
 
+const Together = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export default function Movie({ taco }) {
   const imageApi = 'https://image.tmdb.org/t/p/w500';
   console.warn(taco);
   return (
     <>
       <MovieCard>
-        <div className="title">{taco.title}</div>
-        <div className="card" style={{ width: '150px' }}>
+        <div className="title" style={{ color: 'Grey', fontSize: '20px' }}>
+          {taco.title}
+        </div>
+        <div className="card" style={{ width: '200px' }}>
           <img
             className="card-img-top"
             src={imageApi + taco.poster_path}
@@ -41,12 +48,19 @@ export default function Movie({ taco }) {
             alt={taco.title}
           />
         </div>
-        <button className="btn" type="button">
-          <Link to={`/details/${taco.id}`} className="btn btn-warning">
-            Details
+        <Together>
+          <Link to={`/details/${taco.id}`} className="btn">
+            <i
+              className="fas fa-info-circle"
+              type="button"
+              style={{ color: 'yellow' }}
+            />
           </Link>
-        </button>
-        <AddWatchlist movie={taco} />
+          <AddWatchlist movie={taco} />
+          <button className="btn" type="button" style={{ color: 'grey' }}>
+            {taco.vote_average}
+          </button>
+        </Together>
       </MovieCard>
     </>
   );
@@ -55,10 +69,12 @@ export default function Movie({ taco }) {
 Movie.propTypes = {
   taco: PropTypes.shape({
     id: PropTypes.number,
+    overview: PropTypes.string,
     title: PropTypes.string,
     poster_path: PropTypes.string,
     firebaseKey: PropTypes.string,
     favorite: PropTypes.bool,
+    vote_average: PropTypes.string,
   }),
 };
 

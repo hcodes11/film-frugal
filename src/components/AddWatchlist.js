@@ -7,6 +7,8 @@ import userId from '../api/data/userId';
 const initialState = {
   title: '',
   firebaseKey: '',
+  overview: '',
+  vote_average: '',
   id: '',
   poster_path: '',
   favorite: false,
@@ -48,6 +50,8 @@ export default function AddWatchlist({ movie }) {
         id: movie.id,
         poster_path: movie.poster_path,
         title: movie.title,
+        overview: movie.overview,
+        vote_average: movie.vote_average,
         favorite: false,
         uid: userId(),
       }).then(() => {
@@ -61,12 +65,8 @@ export default function AddWatchlist({ movie }) {
     <div>
       <form onSubmit={handleSubmit}>
         <input type="hidden" id="id" name="id" value={formInput.id} />
-        <button
-          className="btn btn-success"
-          type="submit"
-          onChange={handleChange}
-        >
-          Add to Watchlist
+        <button className="btn" type="submit" onChange={handleChange}>
+          <i className="fas fa-plus" style={{ color: 'green' }} />
         </button>
       </form>
     </div>
@@ -78,9 +78,11 @@ AddWatchlist.propTypes = {
     id: PropTypes.number,
     title: PropTypes.string,
     poster_path: PropTypes.string,
+    overview: PropTypes.string,
     firebaseKey: PropTypes.string,
     favorite: PropTypes.bool,
     uid: PropTypes.string,
+    vote_average: PropTypes.string,
   }),
 };
 

@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 function Initialize() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {

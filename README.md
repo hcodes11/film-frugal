@@ -1,4 +1,4 @@
-# Film Frugal - https://filmfrugal.netlify.app
+# Film Frugal - https://filmfrugal.netlify.app [![Netlify Status](https://api.netlify.com/api/v1/badges/c698a28a-815b-4d94-802a-502298dfb87b/deploy-status)](https://app.netlify.com/sites/spicebox/deploys)
 
 #Flowchart
 
